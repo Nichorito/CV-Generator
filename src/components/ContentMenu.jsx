@@ -5,7 +5,11 @@ export default function ContentMenu({
   personalInfo, 
   updatePersonalInfo, 
   educationEntries, 
-  updateEducation 
+  updateEducation, 
+  experienceEntries,
+  updateExperience,
+  skills,
+  updateSkills
 }) {
   const [openSections, setOpenSections] = useState(["personal"]);
 
@@ -59,7 +63,10 @@ export default function ContentMenu({
           Experience
           <span className="toggle-icon">{openSections.includes("experience") ? "−" : "+"}</span>
         </h2>
-        {openSections.includes("experience") && <div>Experience content here</div>}
+        {openSections.includes("experience") && <ExperienceInfo 
+          experienceEntries={experienceEntries}
+          updateExperience={updateExperience}
+        />}
       </div>
 
       {/*SKILLS SECTION*/}
@@ -207,6 +214,96 @@ function EducationInfo({ educationEntries, updateEducation }) {
       >
         + Add Education
       </button>
+    </div>
+  );
+}
+
+function ExperienceInfo({ experienceEntries, updateExperience }) {
+  const addExperience = () => {
+    updateExperience([...experienceEntries, {
+      id: Date.now(),
+      Title: '',
+      Company: '',
+      startDate: '',
+      endDate: '',
+      additionalInfo: '',
+      location: ''
+    }]);
+  };
+
+  const removeExperience = (id) => {
+    updateExperience(experienceEntries.filter(entry => entry.id !== id));
+  };
+
+  const updateEntry = (id, field, value) => {
+    updateExperience(experienceEntries.map(entry => 
+      entry.id === id ? { ...entry, [field]: value } : entry
+    ));
+  };
+
+  return (
+    <div className="experience-section">
+      {experienceEntries.map((entry, index) => (
+        <div key={entry.id} className="experience-entry">
+          <div className="entry-header">
+            <h3>Entry {index + 1}</h3>
+            <button 
+              onClick={() => removeExperience(entry.id)}
+              className="remove-button"
+            >
+              Remove
+            </button>
+          </div>
+          <h4>Job Title<span className="smallText"> (required)</span></h4>
+          <input 
+            type="text" 
+            placeholder="Enter your job title..." 
+            required="true"
+            value={entry.Title}
+            onChange={(e) => updateEntry(entry.id, 'Title', e.target.value)}
+          />
+          <h4>Company Name<span className="smallText"> (required)</span></h4>
+          <input 
+            type="text" 
+            placeholder="Enter the company name..." 
+            required="true"
+            value={entry.Company}
+            onChange={(e) => updateEntry(entry.id, 'Company', e.target.value)}
+          />
+          <div className="experienceDates">
+            <div>
+              <h4>Start Date</h4>
+              <input 
+                type="date"
+                value={entry.startDate}
+                onChange={(e) => updateEntry(entry.id, 'startDate', e.target.value)}
+              />
+            </div>
+            <div>
+              <h4>End Date</h4>
+              <input 
+                type="date"
+                value={entry.endDate}
+                onChange={(e) => updateEntry(entry.id, 'endDate', e.target.value)}
+              />
+            </div>
+          </div>
+          <h4>Location</h4>
+          <input 
+            type="text" 
+            placeholder="Enter the location of your job..." 
+            value={entry.location}
+            onChange={(e) => updateEntry(entry.id, 'location', e.target.value)}
+          />
+          <h4>Additional Information</h4>
+          <textarea 
+            placeholder="Enter any additional information..." 
+            value={entry.additionalInfo}
+            onChange={(e) => updateEntry(entry.id, 'additionalInfo', e.target.value)}
+          />
+        </div>
+      ))}
+      <button onClick={addExperience} className="add-button">+ Add Experience</button>
     </div>
   );
 }

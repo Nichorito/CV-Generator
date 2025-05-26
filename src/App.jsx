@@ -43,7 +43,7 @@ function App() {
     setExperienceEntries(entries);
   };
 
-  
+
   // State for storing array of skills
   const [skills, setSkills] = useState([]);
 
@@ -64,16 +64,23 @@ function App() {
           updatePersonalInfo={updatePersonalInfo}
           educationEntries={educationEntries}
           updateEducation={updateEducation}
+          experienceEntries={experienceEntries} 
+          updateExperience={updateExperience}   
+          skills={skills}                       
+          updateSkills={updateSkills}           
         />
       case 'customize':
         return <CustomizeMenu />
       default:
-        // Default to content view
         return <ContentMenu 
           personalInfo={personalInfo}
           updatePersonalInfo={updatePersonalInfo}
           educationEntries={educationEntries}
           updateEducation={updateEducation}
+          experienceEntries={experienceEntries}
+          updateExperience={updateExperience}
+          skills={skills}
+          updateSkills={updateSkills}
         />
     }
   }
@@ -155,6 +162,36 @@ function App() {
                     {/* Show location if it exists */}
                     {entry.location && <span>{entry.location}</span>}
                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Add Experience section */}
+          {experienceEntries.length > 0 && (
+            <div className="cv-experience">
+              <h2>Experience</h2>
+              {experienceEntries.map(entry => (
+                <div key={entry.id} className="cv-experience-entry">
+                  <h3>{entry.Title}</h3>
+                  <h4>{entry.Company}</h4>
+                  <div className="cv-experience-details">
+                    {entry.startDate && (
+                      <span>
+                        {new Date(entry.startDate).toLocaleDateString('en-US', { 
+                          month: 'long', 
+                          year: 'numeric' 
+                        })}
+                        {entry.endDate && ' - '}
+                        {entry.endDate && new Date(entry.endDate).toLocaleDateString('en-US', { 
+                          month: 'long', 
+                          year: 'numeric' 
+                        })}
+                      </span>
+                    )}
+                    {entry.location && <span>{entry.location}</span>}
+                  </div>
+                  {entry.additionalInfo && <p>{entry.additionalInfo}</p>}
                 </div>
               ))}
             </div>
