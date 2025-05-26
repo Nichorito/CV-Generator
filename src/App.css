@@ -72,3 +72,31 @@
   background-color: #646cff;
   color: white;
 }
+
+.cv-education {
+  margin-top: 2rem;
+}
+
+.cv-education-entry {
+  margin-bottom: 1.5rem;
+}
+
+.cv-education-entry h3 {
+  margin-bottom: 0.25rem;
+  color: #2c3e50;
+}
+
+.cv-education-details {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.cv-contact-info {
+  display: flex;
+  gap: 1rem;
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 2rem;
+}
