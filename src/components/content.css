@@ -1,11 +1,41 @@
 .container {
-  background-color: white;
-  border-radius: 8px;
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
+    background-color: white;
+    border-radius: 8px;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: all 1s ease;
+}
+
+.educationDates {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin: auto
+}
+.educationDates div {
+    flex: 1;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.section-header:hover {
+    color: #646cff;
+}
+
+.toggle-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 1rem;
 }
 
 .container h2 {
