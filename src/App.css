@@ -11,7 +11,7 @@
   min-height: calc(100vh - 4rem); 
   margin: 2rem;
   box-sizing: border-box;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .left-side {
@@ -19,19 +19,18 @@
   gap: 1rem;
   display: flex;
   overflow-y: auto;
-  border-right: 1px solid #ddd;
-  border-radius: 8px;
   padding-right: 1rem;
 }
 
 .right-side {
-  width: 50%;
-  padding: 20px;
+  width: 40%;
+  aspect-ratio: 1 / 1.4142;
+  padding: 40px;
   background-color: white;
-  overflow-y: auto;
   border-radius: 1px;
-  aspect-ratio: 1 / 1.41421;
   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  align-self: flex-start;
 }
 
 .options {
@@ -73,74 +72,4 @@
   color: white;
 }
 
-.cv-education {
-  margin-top: 2rem;
-}
 
-.cv-education-entry {
-  margin-bottom: 1.5rem;
-}
-
-.cv-education-entry h3 {
-  margin-bottom: 0.25rem;
-  color: #2c3e50;
-}
-
-.cv-education-details {
-  display: flex;
-  justify-content: space-between;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.cv-contact-info {
-  display: flex;
-  gap: 1rem;
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 2rem;
-}
-
-.cv-experience {
-  margin-top: 2rem;
-}
-
-.cv-experience-entry {
-  margin-bottom: 1.5rem;
-}
-
-.cv-experience-entry h3 {
-  margin-bottom: 0.25rem;
-  color: #2c3e50;
-}
-
-.cv-experience-entry h4 {
-  margin: 0.25rem 0;
-  color: #445566;
-}
-
-.cv-experience-details {
-  display: flex;
-  justify-content: space-between;
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 0.5rem;
-}
-
-.cv-skills {
-  margin-top: 2rem;
-}
-
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skill-item {
-  background-color: #f0f0f0;
-  padding: 0.25rem 0.75rem;
-  border-radius: 15px;
-  font-size: 0.9em;
-  color: #444;
-}

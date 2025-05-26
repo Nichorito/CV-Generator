@@ -1,3 +1,5 @@
+import 'CVComponent.css'; 
+
 export default function CVComponent({ 
   personalInfo, 
   educationEntries, 
