@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import ContentMenu from './components/ContentMenu'
 import CustomizeMenu from './components/CustomizeMenu'
+import CVComponent from './components/CVComponent'
 
 function App() {
   // State for tracking which view is active (content or customize)
@@ -119,83 +120,18 @@ function App() {
 
         {/* Right side - CV Preview */}
         <div className="right-side">
-          {/* Show full name or default text */}
-          <h1>{personalInfo.fullName || 'John Smith'}</h1>
+          <CVComponent
+            personalInfo={personalInfo}
+            updatePersonalInfo={updatePersonalInfo}
+            educationEntries={educationEntries}
+            updateEducation={updateEducation}
+            experienceEntries={experienceEntries} 
+            updateExperience={updateExperience}   
+            skills={skills}                       
+            updateSkills={updateSkills} 
+          />
 
-          {/* Contact information section */}
-          <div className="cv-contact-info">
-            {/* Show info or placeholders */}
-            {<p>{personalInfo.email || "johnsmith@email.com"}</p>}
-            {<p>{personalInfo.phone || "123-456-7890"}</p>}
-            {personalInfo.website && <p>{personalInfo.website}</p>}
-            {personalInfo.website && <p>{personalInfo.location}</p>}
-          </div>
-          
-          {/* Education section - only show if entries exist */}
-          {educationEntries.length > 0 && (
-            <div className="cv-education">
-              <h2>Education</h2>
-              {/* Map through each education entry */}
-              {educationEntries.map(entry => (
-                <div key={entry.id} className="cv-education-entry">
-                  <h3>{entry.schoolName}</h3>
-                  {/* Only show degree if it exists */}
-                  {entry.degree && <p>{entry.degree}</p>}
-                  <div className="cv-education-details">
-                    {/* Date formatting section */}
-                    {entry.startDate && (
-                      <span>
-                        {/* Convert date to readable format */}
-                        {new Date(entry.startDate).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          year: 'numeric' 
-                        })}
-                        {/* Add dash if end date exists */}
-                        {entry.endDate && ' - '}
-                        {/* Show end date if it exists */}
-                        {entry.endDate && new Date(entry.endDate).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          year: 'numeric' 
-                        })}
-                      </span>
-                    )}
-                    {/* Show location if it exists */}
-                    {entry.location && <span>{entry.location}</span>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Add Experience section */}
-          {experienceEntries.length > 0 && (
-            <div className="cv-experience">
-              <h2>Experience</h2>
-              {experienceEntries.map(entry => (
-                <div key={entry.id} className="cv-experience-entry">
-                  <h3>{entry.Title}</h3>
-                  <h4>{entry.Company}</h4>
-                  <div className="cv-experience-details">
-                    {entry.startDate && (
-                      <span>
-                        {new Date(entry.startDate).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          year: 'numeric' 
-                        })}
-                        {entry.endDate && ' - '}
-                        {entry.endDate && new Date(entry.endDate).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          year: 'numeric' 
-                        })}
-                      </span>
-                    )}
-                    {entry.location && <span>{entry.location}</span>}
-                  </div>
-                  {entry.additionalInfo && <p>{entry.additionalInfo}</p>}
-                </div>
-              ))}
-            </div>
-          )}
+         
         </div>
       </div>
     </>
