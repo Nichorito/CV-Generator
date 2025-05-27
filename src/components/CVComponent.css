@@ -9,6 +9,7 @@
 
 .cv-header h1 {
     margin: 0;
+    font-size: 2.5rem;
     color: white;
 }
 
@@ -62,33 +63,88 @@
 }
 
 .cv-experience {
-  margin-top: 2rem;
+  margin-top: 0rem;
 }
 
 .cv-experience-entry {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.cv-experience-entry h3 {
-  margin-bottom: 0.25rem;
+.cv-experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cv-experience-title {
+  flex: 1;
+}
+
+.cv-experience-title h3 {
+  margin: 0;
   color: #2c3e50;
 }
 
-.cv-experience-entry h4 {
+.cv-experience-title h4 {
   margin: 0.25rem 0;
   color: #445566;
 }
 
-.cv-experience-details {
-  display: flex;
-  justify-content: space-between;
+.cv-experience-meta {
+  text-align: right;
+}
+
+.cv-experience-meta .date,
+.cv-experience-meta .location {
   color: #666;
   font-size: 0.9em;
+}
+
+.cv-education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 0.5rem;
 }
 
+.cv-education-title {
+  flex: 1;
+}
+
+.cv-education-title h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.cv-education-title p {
+  margin: 0.25rem 0;
+  color: #445566;
+}
+
+.cv-education-meta {
+  text-align: right;
+}
+
+.cv-education-meta .date,
+.cv-education-meta .location {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.additional-info {
+  padding-left: 1.5rem;
+  white-space: pre-line;
+  margin-top: 0rem;
+  line-height: 1.4;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: #444;
+}
+
 .cv-skills {
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .skills-list {

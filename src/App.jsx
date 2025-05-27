@@ -42,20 +42,20 @@ function App() {
     {
       id: 1,
       Title: 'Project Manager',
-      Company: '',
-      startDate: '',
-      endDate: '',
-      location: '',
-      additionalInfo: ''
+      Company: 'Pomerleau Inc',
+      startDate: 'April 2023',
+      endDate: 'Sept 2023',
+      location: 'Moncton, NB',
+      additionalInfo: "• Assisted superintendents and engineers in day-to-day activities \n• Prepared subcontracts and scopes of work / specifications for tendering to subcontractors \n• Developed look ahead schedules and budget reports \n• Developed construction site policies"
     },
     {
       id: 2,
       Title: 'Electrician',
-      Company: '',
-      startDate: '',
-      endDate: '',
-      location: '',
-      additionalInfo: ''
+      Company: 'Netco Electric',
+      startDate: 'Sept 2023',
+      endDate: 'April 2024',
+      location: 'Moncton, NB',
+      additionalInfo: '• Reviewed blueprints and created riser diagrams for over 30 solid block walls in the detention area of a new RCMP building. Working closely with the masons to ensure that all outlets, lightswitches, data points, security systems, and fire alarm systems were installed at proper heights and distances \n• Installed and troubleshot various types of electrical systems and panels \n• Experience with electrical systems, blueprint/shop drawing review, planning, and conduit fitting'
     }
   ]);
 
@@ -74,7 +74,26 @@ function App() {
   };
 
   // State for storing array of skills
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState([
+    { id: 1, name: 'JavaScript' },
+    { id: 2, name: 'React' },
+    { id: 3, name: 'Node.js' },
+    { id: 4, name: 'HTML' },
+    { id: 5, name: 'CSS' },
+    { id: 6, name: 'Python' },
+    { id: 7, name: 'C#' },
+    { id: 8, name: 'C' },
+    { id: 9, name: 'FireCrawl API' },
+    { id: 10, name: 'AWS' },
+    { id: 11, name: 'Git' },
+    { id: 12, name: 'Agile Methodologies' },
+    { id: 13, name: 'Project Management' },
+    { id: 14, name: 'Problem Solving' },
+    { id: 15, name: 'YOLOv8' },
+    { id: 16, name: 'Unity' },
+    { id: 17, name: '3D Modelling' },
+    { id: 18, name: 'Blender' },
+  ]);
 
   // Function to update skills array
   const updateSkills = (newSkills) => {

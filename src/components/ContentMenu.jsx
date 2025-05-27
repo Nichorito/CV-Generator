@@ -78,7 +78,12 @@ export default function ContentMenu({
           Skills
           <span className="toggle-icon">{openSections.includes("skills") ? "−" : "+"}</span>
         </h2>
-      {openSections.includes("skills") && <div>Skills content here</div>}
+      {openSections.includes("skills") && 
+        <SkillsInfo 
+          skills={skills}
+          updateSkills={updateSkills}
+        />
+      }
       </div>
     </div>
   )
@@ -304,6 +309,58 @@ function ExperienceInfo({ experienceEntries, updateExperience }) {
         </div>
       ))}
       <button onClick={addExperience} className="add-button">+ Add Experience</button>
+    </div>
+  );
+}
+
+function SkillsInfo({ skills, updateSkills }) {
+  const [newSkill, setNewSkill] = useState('');
+
+  const addSkill = () => {
+    if (newSkill.trim()) {
+      updateSkills([...skills, {
+        id: Date.now(),
+        name: newSkill.trim()
+      }]);
+      setNewSkill('');
+    }
+  };
+
+  const removeSkill = (id) => {
+    updateSkills(skills.filter(skill => skill.id !== id));
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      addSkill();
+    }
+  };
+
+  return (
+    <div className="skills-section">
+      <div className="skills-input">
+        <input
+          type="text"
+          placeholder="Add a skill..."
+          value={newSkill}
+          onChange={(e) => setNewSkill(e.target.value)}
+          onKeyPress={handleKeyPress}
+        />
+        <button onClick={addSkill} className="add-button">Add</button>
+      </div>
+      <div className="skills-list">
+        {skills.map(skill => (
+          <div key={skill.id} className="skill-item">
+            <span>• {skill.name}</span>
+            <button 
+              onClick={() => removeSkill(skill.id)}
+              className="remove-skill-button"
+            >
+              ×
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
