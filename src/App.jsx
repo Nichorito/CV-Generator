@@ -115,6 +115,10 @@ function App() {
     setExperienceEntries(entries);
   };
 
+  // State declarations for font and color customization
+  const [fontFamily, setFontFamily] = useState("Arial, sans-serif");
+  const [headerColor, setHeaderColor] = useState("#1e3349");
+
   // Conditional rendering function for the left side menu
   const renderMenu = () => {
     switch(currentView) {
@@ -131,7 +135,12 @@ function App() {
           updateSkills={updateSkills}           
         />
       case 'customize':
-        return <CustomizeMenu />
+        return <CustomizeMenu 
+          fontFamily={fontFamily}
+          setFontFamily={setFontFamily}
+          headerColor={headerColor}
+          setHeaderColor={setHeaderColor}
+        />
       default:
         return <ContentMenu 
           personalInfo={personalInfo}
@@ -188,7 +197,9 @@ function App() {
             educationEntries={educationEntries}
             experienceEntries={experienceEntries} 
             skills={skills}                       
-            updateSkills={updateSkills} 
+            updateSkills={updateSkills}
+            fontFamily={fontFamily}
+            headerColor={headerColor}
           />
 
          

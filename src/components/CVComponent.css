@@ -1,5 +1,4 @@
 .cv-header {
-    background-color: #1e3349;
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -15,7 +14,6 @@
 
 .cv-body {
     padding: 0rem 2rem;
-    font-family: Arial, sans-serif;
 }
 
 .cv-subheader {

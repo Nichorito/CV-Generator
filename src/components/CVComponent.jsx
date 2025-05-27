@@ -4,11 +4,13 @@ export default function CVComponent({
   personalInfo, 
   educationEntries, 
   experienceEntries,
-  skills
+  skills,
+  fontFamily,
+  headerColor
 }) {
     return (
-      <>
-        <div className="cv-header">
+      <div style={{ fontFamily: fontFamily }}>
+        <div className="cv-header" style={{ backgroundColor: headerColor }}>
 
             {/* Personal information section */}
             <h1>{personalInfo.fullName || ''}</h1>
@@ -97,6 +99,7 @@ export default function CVComponent({
                     ))}
                 </div>
             )}
+            
             {/* Skills section */}
             {skills.length > 0 && (
             <div className="cv-skills">
@@ -111,6 +114,6 @@ export default function CVComponent({
             </div>
             )}
         </div>
-      </>
+      </div>
     );
 }
