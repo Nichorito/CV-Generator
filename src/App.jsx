@@ -8,42 +8,70 @@ function App() {
   // State for tracking which view is active (content or customize)
   const [currentView, setCurrentView] = useState("content");
 
-
-  // State for storing all personal information
+  // Initial personal information
   const [personalInfo, setPersonalInfo] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    location: ''
+    fullName: 'Nicholas Sheppard',
+    email: 'nsheppard999@gmail.com',
+    phone: '(705) 527-7180',
+    location: 'Montreal, QC',
+    website: 'linkedin.com/in/nichorito/'
   });
 
-  // Function to update a specific field in personal info
-  // Takes field name and new value as parameters
-  const updatePersonalInfo = (field, value) => {
-    setPersonalInfo(prev => ({
-      ...prev,  // Spread existing personal info
-      [field]: value  // Update only the specified field
-    }));
+  // Initial education entries
+  const [educationEntries, setEducationEntries] = useState([
+    {
+      id: 1,
+      schoolName: 'Concordia University',
+      degree: 'B.Sci in Computer Science',
+      startDate: 'Sept 2024',
+      endDate: 'April 2027',
+      location: 'Montreal, QC'
+    },
+    {
+      id: 2,
+      schoolName: 'Dalhousie University',
+      degree: 'B.Eng in Mechanical Engineering',
+      startDate: 'Sept 2021',
+      endDate: 'April 2023',
+      location: 'Halifax, NS'
+    }
+  ]);
+
+  // Initial experience entries
+  const [experienceEntries, setExperienceEntries] = useState([
+    {
+      id: 1,
+      Title: 'Project Manager',
+      Company: '',
+      startDate: '',
+      endDate: '',
+      location: '',
+      additionalInfo: ''
+    },
+    {
+      id: 2,
+      Title: 'Electrician',
+      Company: '',
+      startDate: '',
+      endDate: '',
+      location: '',
+      additionalInfo: ''
+    }
+  ]);
+
+  // Add clear function
+  const clearAllData = () => {
+    setPersonalInfo({
+      fullName: '',
+      email: '',
+      phone: '',
+      location: '',
+      website: ''
+    });
+    setEducationEntries([]);
+    setExperienceEntries([]);
+    setSkills([]);
   };
-
-
-  // State for storing array of education entries
-  const [educationEntries, setEducationEntries] = useState([]);
-
-  // Function to update entire education entries array
-  const updateEducation = (entries) => {
-    setEducationEntries(entries);
-  };
-
-
-  // State for storing array of experience entries
-  const [experienceEntries, setExperienceEntries] = useState([]);
-
-  // Function to update entire experience entries array
-  const updateExperience = (entries) => {
-    setExperienceEntries(entries);
-  };
-
 
   // State for storing array of skills
   const [skills, setSkills] = useState([]);
@@ -53,7 +81,23 @@ function App() {
     setSkills(newSkills);
   };
 
+  // Function to update personal info
+  const updatePersonalInfo = (field, value) => {
+    setPersonalInfo(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
 
+  // Function to update education entries
+  const updateEducation = (entries) => {
+    setEducationEntries(entries);
+  };
+
+  // Function to update experience entries
+  const updateExperience = (entries) => {
+    setExperienceEntries(entries);
+  };
 
   // Conditional rendering function for the left side menu
   const renderMenu = () => {
@@ -109,7 +153,10 @@ function App() {
                 <button className="button-load">
                   <span>Load</span>
                 </button>
-                <button className="button-clear"> 
+                <button 
+                  className="button-clear"
+                  onClick={clearAllData}
+                > 
                   <span>Clear</span>
                 </button>
             </div>
@@ -122,11 +169,8 @@ function App() {
         <div className="right-side">
           <CVComponent
             personalInfo={personalInfo}
-            updatePersonalInfo={updatePersonalInfo}
             educationEntries={educationEntries}
-            updateEducation={updateEducation}
             experienceEntries={experienceEntries} 
-            updateExperience={updateExperience}   
             skills={skills}                       
             updateSkills={updateSkills} 
           />
